@@ -41,3 +41,50 @@ class Queue
   end
 
 end
+
+
+class Map
+
+  def initialize
+    @map = []
+  end
+
+  def set(key, value)
+    @map.each do |pair|
+      cur_key = pair[0]
+      if cur_key == key
+        pair[1] = value
+        return value
+      end
+    end
+
+    @map << [key, value]
+    value
+  end
+
+  def get(key)
+    @map.each do |pair|
+      cur_key = pair[0]
+      cur_val = pair[1]
+      return cur_val if cur_key == key
+    end
+    nil
+  end
+
+  def delete(key)
+    @map.each do |pair|
+      cur_key = pair[0]
+      cur_val = pair[1]
+      if cur_key == key
+        @map.delete(pair)
+        return cur_val
+      end
+    end
+    nil
+  end
+
+  def show
+    @map
+  end
+
+end
